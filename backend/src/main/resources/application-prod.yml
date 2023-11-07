@@ -1,0 +1,37 @@
+server:
+  port: 8090
+
+logging:
+  config: classpath:log4j2.yml
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/AI_CHAT?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+mybatis-plus:
+  mapper-locations: classpath:com/acautomaton/aichat/mapper/*.xml, classpath:com/acautomaton/aichat/mapper/**/*.xml
+  configuration:
+    auto-mapping-unknown-column-behavior: warning
+  global-config:
+    banner: false
+    db-config:
+      logic-delete-field: deleteFlag
+
+pagehelper:
+  reasonable: true
+  auto-dialect: true
+  support-methods-arguments: true
+
+project:
+  jwt:
+    secretkey: 244226147046804D6351665468576D5A1759034777217A25432A462D4A614E64
+    timeoutDays: 7
+  cors:
+    allow-origin: http://localhost:8091
+#  ai:
+#    apikey: [from program arguments]
+#    secretkey: [from program arguments]
